@@ -1,0 +1,83 @@
+.blogbox{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 30px;
+}
+
+.container-box{
+  display: grid;
+  grid-template-columns: 66% 33%;
+  grid-gap: 30px;
+  align-items:start;
+  /* grid-auto-flow: row dense;
+  grid-auto-rows: 20px; */
+}
+
+.img-fluid{
+  object-fit: cover;
+  max-height: 240px;
+}
+.amenities-thumb{
+  border-radius: 5px;
+}
+
+.userPhoto{
+  height: 48px;
+  width: 48px;
+}
+.header-area{
+  line-height: 90px;
+}
+
+.gallery-box{
+  display: grid;
+  grid-template-columns: repeat(6,1fr);
+  grid-gap: 30px;
+  justify-content: flex-start;
+}
+.gallery-box>div{
+  grid-column: span 2;
+}
+.gallery-box>div:nth-child(5n-1){
+  grid-column: span 3;
+}
+.gallery-box>div:nth-child(5n){
+  grid-column: span 3;
+}
+.gallery-box .single-amenities{
+  height: 300px;
+  margin:0;
+}
+.gallery-box .single-amenities .amenities-thumb{
+  height: 100%;
+}
+.gallery-box .single-amenities img{
+  height: 100%;
+}
+
+.img-fluid.top-cover{
+  max-height: 600px;
+  height: 600px;
+}
+
+
+.banner-blog{
+  background: url(../img/banner/banner.jpg) no-repeat center;
+  background-size: cover;
+}
+.banner-guitar{
+  background: url(../img/banner/guitar.jpg) no-repeat center;
+  background-size: cover;
+}
+.banner-me{
+  background: url(../img/banner/me.jpg) no-repeat center;
+  background-size: cover;
+}
+.banner-gallery{
+  background: url(../img/banner/gallery.jpg) no-repeat center;
+  background-size: cover;
+}
+.banner-demo{
+  background: url(../img/banner/demo.jpg) no-repeat center;
+  background-size: cover;
+}
