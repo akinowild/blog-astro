@@ -9,34 +9,47 @@ const href=`/blog/id/${detail.id}`
 
 ---
 
-<div class="single-amenities">
-    <div class="amenities-thumb">
-        <img src={detail.cover?RES_URL+detail.cover:EmptyImage} width="100%" alt="1" />
-
-    </div>
-    <div class="amenities-details">
-        <h5>
-            <a href={href}>{detail.title}
-            </a>
-        </h5>
-        <div class="amenities-meta mb-10">
-            <a href={href} class=""><span class="ti-calendar"></span>{detail.date_created}</a>
-        </div>
-        <p>
+<div class="blog-list">
+    <div class="blog-list-box">
+        <div class="blog-list_t"><a href={href}>{detail.title}</a></div>
+        <div class="blog-list_time">{detail.date_created}</div>
+        <div class="blog-list_text">
             {detail.summary?detail.summary:'很懒没有简介'}
-        </p>
-
-        <div class="d-flex justify-content-between mt-20">
-            <div>
-                <a href={href} class="blog-post-btn">
-                    Read More <span class="ti-arrow-right"></span>
-                </a>
-            </div>
-            <div class="category">
-                <a href={href}>
-                    <span class="ti-folder mr-1"></span> Travel
-                </a>
-            </div>
         </div>
+    </div>
+    <div class="blog-list_img">
+        <a href={href}><img src={detail.cover?RES_URL+detail.cover:EmptyImage} width="100%" alt="1" /></a>
     </div>
 </div>
+
+<!--<div class="single-amenities">-->
+<!--    <div class="amenities-thumb">-->
+<!--        <img src={detail.cover?RES_URL+detail.cover:EmptyImage} width="100%" alt="1" />-->
+
+<!--    </div>-->
+<!--    <div class="amenities-details">-->
+<!--        <h5>-->
+<!--            <a href={href}>{detail.title}-->
+<!--            </a>-->
+<!--        </h5>-->
+<!--        <div class="amenities-meta mb-10">-->
+<!--            <a href={href} class=""><span class="ti-calendar"></span>{detail.date_created}</a>-->
+<!--        </div>-->
+<!--        <p>-->
+<!--            {detail.summary?detail.summary:'很懒没有简介'}-->
+<!--        </p>-->
+
+<!--        <div class="d-flex justify-content-between mt-20">-->
+<!--            <div>-->
+<!--                <a href={href} class="blog-post-btn">-->
+<!--                    Read More <span class="ti-arrow-right"></span>-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            <div class="category">-->
+<!--                <a href={href}>-->
+<!--                    <span class="ti-folder mr-1"></span> Travel-->
+<!--                </a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->

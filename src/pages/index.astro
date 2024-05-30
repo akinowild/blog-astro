@@ -21,16 +21,16 @@ const items = await client.request(
 ---
 
 <Layout title="首页" >
-    <!--<Cover />-->
+    <Cover />
     <section class="blog-post-area section-gap relative">
         <div class="container container-box">
-            <!--<div class="blogbox">-->
-            <!--    {-->
-            <!--        items.map((item)=>{-->
-            <!--            return  <BlogList detail={item} />-->
-            <!--        })-->
-            <!--    }-->
-            <!--</div>-->
+            <div class="blogbox">
+                {
+                    items.map((item)=>{
+                        return  <BlogList detail={item} />
+                    })
+                }
+            </div>
             <!--<Rightbox />-->
         </div>
     </section>
