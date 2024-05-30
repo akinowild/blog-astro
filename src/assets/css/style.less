@@ -1,0 +1,65 @@
+@import url('./reset.css');
+
+:root{
+ --bodyColor:rgba(24,90,64,0.06);
+}
+body{
+  background-image: linear-gradient(to right,var(--bodyColor) 1px, transparent 1px),linear-gradient(to bottom,var(--bodyColor) 1px, transparent 1px);
+  background-size: 7px 7px;
+}
+.main{
+  width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  .side{
+    &-area{
+      position: absolute;
+      top: 50px;
+      right: 0;
+      z-index: 1;
+      .logo{
+        width: 40px;
+        display: block;
+        text-align: center;
+        border-left: 2px solid rgba(0,0,0,1);
+        padding: 0 0 50px 20px;
+        cursor: pointer;
+        color: rgb(46, 64, 91);
+        span{
+          writing-mode:tb;
+          font-size: 30px;
+        }
+        .mx-auto{
+          width: 40px;
+        }
+      }
+      .header-top{
+        padding: 100px 0 0;
+        a{
+          display: block;
+          margin: 0 0 5px;
+          color: rgb(46, 64, 91);
+          line-height: 32px;
+          position: relative;
+          text-decoration: none;
+          border-bottom: 1px dashed rgb(46, 64, 91);
+        }
+        a:before{
+          content: '';
+          position: absolute;
+          bottom: -1px;
+          left: 0;
+          width: 0;
+          z-index: 1;
+          height: 2px;
+          background:rgb(46, 64, 91);
+          transition: width 0.5s;
+        }
+        a:hover:before{
+          width: 100%;
+        }
+      }
+    }
+
+  }
+}

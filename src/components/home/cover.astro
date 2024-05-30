@@ -1,0 +1,104 @@
+---
+import {createDirectus, rest, readItems} from '@directus/sdk';
+import {Image} from 'astro:assets';
+import Pre from '../../assets/img/prev.png'
+import Next from '../../assets/img/next.png'
+const {CMS_URL, RES_URL} = import.meta.env
+
+const client = createDirectus(CMS_URL).with(rest());
+
+interface BlogItem {
+    id: string;
+    title: string;
+    date_published: string;
+    summary: string;
+    cover: string;
+    top: boolean;
+}
+
+const items = await client.request<BlogItem[]>(
+    readItems('blog', {
+        fields: ['id', 'title', 'date_published', 'summary', 'cover', 'top'],
+        filter: {
+            'top': true
+        },
+        sort: ['sort', '-date_created'],
+        limit: 4
+    })
+);
+
+---
+
+<section class="home-banner-area relative">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="owl-carousel home-banner-owl owl-loaded owl-drag">
+                <div class="owl-stage-outer">
+                    <div class="owl-stage"
+                         style="transform: translate3d(-917px, 0px, 0px); transition: all 1.5s ease 0s; width: 7616px; padding-left: 140px; padding-right: 140px;">
+                        {items.map((item) => (
+                                <div
+                                        class="owl-item cloned"
+                                        style="width: 907px; margin-right: 10px;"
+                                >
+                                    <div class="banner-img">
+                                        <a href=`/blog/${item.id}` data-value={RES_URL + item.cover}>
+                                            <Image
+                                                    class="img-fluid top-cover"
+                                                    inferSize={true}
+                                                    src=`${RES_URL}${item.cover}`
+                                                    alt=""
+                                            />
+                                        </a>
+                                        <div class="text-wrapper">
+                                            <a href=`/blog/${item.id}` class="d-flex">
+                                                <h1>
+                                                    {item.title}
+                                                </h1>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                        ))}
+
+
+                    </div>
+                </div>
+                <div class="owl-nav">
+                    <button type="button" role="presentation" class="owl-prev">
+                        <Image src={Pre} alt="上一张"></Image>
+                    </button>
+                    <button type="button" role="presentation" class="owl-next">
+                        <Image src={Next} alt="下一张"></Image>
+                    </button>
+                </div>
+                <div class="owl-dots">
+                    <!--{#each covers as item,i }-->
+                    <!--<button  on:click={() => changeCover(i)} class="{coverIndex === i ? 'owl-dot actived':'owl-dot' }"></button>-->
+                    <!--{/each}-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="social-icons">
+        <ul>
+            <li>
+                <a href="/"><i class="fa fa-facebook"/></a>
+            </li>
+            <li>
+                <a href="/"><i class="fa fa-twitter"/></a>
+            </li>
+            <li>
+                <a href="/"><i class="fa fa-pinterest"/></a>
+            </li>
+            <li class="diffrent">sharre now</li>
+        </ul>
+    </div>
+</section>
+
+
+<style>
+    .home-banner-area .owl-carousel .actived {
+        opacity: 1;
+    }
+</style>

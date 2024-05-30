@@ -1,8 +1,40 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Cover from "@/components/home/cover.astro"
+import BlogList from '@/components/BlogList.astro'
+
+const data ={a:1}
+import {createDirectus,rest,readItems} from "@directus/sdk";
+
+const { CMS_URL } = import.meta.env
+
+const client = createDirectus(CMS_URL).with(rest());
+
+const items = await client.request(
+    readItems('blog', {
+        fields: ['id', 'title', 'date_published', 'summary', 'cover'],
+        sort: ['sort', '-date_created'],
+        limit: 10
+    })
+);
+
 ---
 
-<Layout title="首页" />
+<Layout title="首页" >
+    <!--<Cover />-->
+    <section class="blog-post-area section-gap relative">
+        <div class="container container-box">
+            <!--<div class="blogbox">-->
+            <!--    {-->
+            <!--        items.map((item)=>{-->
+            <!--            return  <BlogList detail={item} />-->
+            <!--        })-->
+            <!--    }-->
+            <!--</div>-->
+            <!--<Rightbox />-->
+        </div>
+    </section>
+</Layout>
 <style>
     main {
         margin: auto;

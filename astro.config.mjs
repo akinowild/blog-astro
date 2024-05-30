@@ -1,4 +1,20 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
+import path from 'path'
 
-// https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+    integrations: [],
+    markdown: {
+        syntaxHighlight: "shiki",
+        shikiConfig: {
+            theme: "dark-plus",
+        },
+    },
+    site: "https://www.michael-b.com",
+    vite: {
+        resolve: {
+            alias: {
+                '@': path.resolve('./src'),
+            },
+        },
+    },
+})
