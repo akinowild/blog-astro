@@ -8,34 +8,41 @@ const { pathname } = Astro.url;
 const isActive = (path: string) => pathname.includes(path);
 const isHome = () => pathname === "/";
 ---
-
-<div class="side-area">
-    <div class="header-wrap">
-        <a class="logo">
-            <Image
-                src={Logo}
-                class="mx-auto"
-                alt="A description of my image."
-            />
-            <span>秋野的意外</span>
-        </a>
-        <div class="header-top">
-            <a class={isHome() ? "active" : ""} href="/">首页</a>
-            <a class={isActive("/blog") ? "active" : ""} href="/blog"
-                >日志</a
-            >
-            <a class={isActive("/photo") ? "active" : ""} href="/photo"
-                >相册</a
-            >
-            <a class={isActive("/demo") ? "active" : ""} href="/demo"
-                >一些Demo</a
-            >
-            <a class={isActive("/guitar") ? "active" : ""} href="/guitar"
-                >谱子</a
-            >
-            <a class={isActive("/me") ? "active" : ""} href="/me">猜</a>
-        </div>
+<header>
+    <div class="logo-text">
+        <strong>QIU</strong> & <strong>YE</strong>
     </div>
-</div>
+    <div class="line-box">
+        秋野的意外:秋野日疏芜，寒江动碧虚。系舟蛮井络，卜宅楚村墟。枣熟从人打，葵荒欲自锄。盘餐老夫食，分减及溪鱼。
+    </div>
+</header>
+<!--<div class="side-area">-->
+<!--    <div class="header-wrap">-->
+<!--        <a class="logo">-->
+<!--            <Image-->
+<!--                src={Logo}-->
+<!--                class="mx-auto"-->
+<!--                alt="A description of my image."-->
+<!--            />-->
+<!--            <span>秋野的意外</span>-->
+<!--        </a>-->
+<!--        <div class="header-top">-->
+<!--            <a class={isHome() ? "active" : ""} href="/">首页</a>-->
+<!--            <a class={isActive("/blog") ? "active" : ""} href="/blog"-->
+<!--                >日志</a-->
+<!--            >-->
+<!--            <a class={isActive("/photo") ? "active" : ""} href="/photo"-->
+<!--                >相册</a-->
+<!--            >-->
+<!--            <a class={isActive("/demo") ? "active" : ""} href="/demo"-->
+<!--                >一些Demo</a-->
+<!--            >-->
+<!--            <a class={isActive("/guitar") ? "active" : ""} href="/guitar"-->
+<!--                >谱子</a-->
+<!--            >-->
+<!--            <a class={isActive("/me") ? "active" : ""} href="/me">猜</a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 <style></style>
