@@ -18,7 +18,7 @@ export default function BlogList(props){
             <img src={RES_URL+data.cover} alt=""/>
         </div>
         <div className="blog-news">
-            <div className="blog-title"><a href="">{data.title}</a></div>
+            <div className="blog-title"><a href={'/blog/'+data.id}>{data.title}</a></div>
             <div className="blog-desc">
                 {data.summary}
             </div>

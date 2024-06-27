@@ -78,8 +78,9 @@ header{
   .logo-text{
     color: var(--text-color-1);
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     letter-spacing: 20px;
+    margin:-20px 0;
     strong{
       @font-face{
         font-family: 'monoton';
@@ -102,6 +103,12 @@ header{
   grid-template-columns: 1fr 1fr;
   grid-template-rows:120px 1fr;
   grid-gap: 20px;
+  a{
+    text-decoration: none;
+  }
+  a:hover:before{
+    display: none;
+  }
   &-tit{
     font-size: 60px;
     line-height: 60px;
@@ -122,7 +129,8 @@ header{
 
 .container{
   display: grid;
-  grid-template-columns: 1fr 370px;
+  grid-template-columns: 1fr 300px;
+  grid-gap: 20px;
 
 }
 .blog-list{
@@ -188,5 +196,53 @@ footer{
     a{
       color: var(--bg-color-1);
     }
+  }
+}
+
+.home-side{
+  &-tit{
+    font-size: 20px;
+    font-weight: bold;
+    strong{
+      display: block;
+      font-size: 16px;
+    }
+  }
+  .book-cover{
+    img{
+      width: 100%;
+      aspect-ratio: 3 / 4;
+    }
+  }
+}
+
+.detail{
+  &-top{
+    font-size: 14px;
+    line-height: 24px;
+    padding: 10px 0;
+  }
+  &-tit{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding:20px 0;
+    &_main{
+      font-size: 48px;
+      line-height: 48px;
+    }
+    &_sub{
+      font-size: 14px;
+      line-height: 24px;
+    }
+  }
+  &-cover{
+    width: 100%;
+    img{
+      width: 100%;
+    }
+  }
+  .detail-box{
+    display: grid;
+    grid-template-columns: 1fr 320px;
   }
 }

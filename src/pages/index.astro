@@ -2,8 +2,9 @@
 import Layout from "../layouts/Layout.astro";
 import Recommend from '../components/home/recommend'
 import BlogList from '../components/home/BlogList'
+import HomeSide from "../components/home/HomeSide";
 
-import {createDirectus,rest,readItems} from "@directus/sdk";
+import {createDirectus,rest,readItems,readItem} from "@directus/sdk";
 
 const { CMS_URL } = import.meta.env
 
@@ -16,10 +17,22 @@ const items = await client.request(
         limit: 10
     })
 );
+
+const top = true
+const recommendBlog = await client.request(readItem('blog',1,{top:true}));
+
+
+const books = await client.request(
+    readItems('book', {
+        fields: ['id', 'name', 'week', 'remark', 'cover','detail'],
+        sort: ['sort', '-date_created'],
+        limit: 1
+    })
+);
 ---
 
 <Layout title="首页" >
-    <Recommend text="我的数据" />
+    <Recommend data={recommendBlog} />
     <div class="container">
         <div class="container-left">
             {
@@ -28,9 +41,7 @@ const items = await client.request(
                 })
             }
         </div>
-        <div class="container-right">
-
-        </div>
+        <HomeSide data={books} />
     </div>
 
 </Layout>
