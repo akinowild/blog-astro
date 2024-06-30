@@ -1,0 +1,42 @@
+---
+const { RES_URL } = import.meta.env
+const {data} = Astro.props
+function convertDate(dateString) {
+    const dateParts = dateString.split('T')[0].split('-');
+    const timeParts = dateString.split('T')[1].split('.')[0].split(':');
+    const year = dateParts[0];
+    const month = dateParts[1];
+    const day = dateParts[2];
+    const hour = timeParts[0];
+    const minute = timeParts[1];
+    const second = timeParts[2];
+    return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
+}
+
+
+---
+<div>
+<div class='blog-list'>
+<div class="blog-list-cover">
+    <img src={RES_URL + data.cover} alt=""/>
+</div>
+<div class="blog-news">
+    <div class="blog-title"><a href={'/blog/'+data.id}>{data.title}</a></div>
+    <div class="blog-desc">
+        {data.summary}
+    </div>
+    <div class="blog-news-bottom">
+        <div class="blog-news-time">
+            <strong>时间：</strong>{convertDate(data.date_created)}
+        </div>
+        <div class="blog-news-tag">
+            {
+                data.tag?.map((e)=> {
+                    return <a href="">{e}</a>
+                })
+            }
+        </div>
+    </div>
+</div>
+</div>
+        </div>

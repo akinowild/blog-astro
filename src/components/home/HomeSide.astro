@@ -1,0 +1,24 @@
+---
+const { RES_URL } = import.meta.env
+const {data} = Astro.props
+---
+
+
+<div class="home-side">
+{
+    data.map((e)=> {
+        return <>
+            <div class="home-side-tit">
+                <strong>本周推荐图书</strong>
+                {e.week}
+            </div>
+
+            <div class="book-cover">
+                <img src={RES_URL + e.cover} alt=""/>
+            </div>
+        </>
+
+    })
+}
+
+</div>

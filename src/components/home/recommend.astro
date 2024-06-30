@@ -1,0 +1,19 @@
+---
+const { RES_URL } = import.meta.env
+const {data} = Astro.props
+---
+
+
+ <div class="recommend">
+    <div class="recommend-tit">
+        <a href={'/blog/'+data.id}>{data.title}</a>
+    </div>
+    <div class="recommend-sub">
+        {data.summary}
+    </div>
+    <div class="recommend-cover">
+        <a href={'/blog/'+data.id}>
+            <img src={RES_URL + data.cover} alt=""/>
+        </a>
+    </div>
+</div>
